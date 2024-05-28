@@ -57,6 +57,7 @@ const showModalOnWin = () => {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  align-items: center;
   gap: 3rem;
 }
 
@@ -68,7 +69,6 @@ const showModalOnWin = () => {
   width: min-content;
   height: min-content;
   border: 0.0625rem solid #9A0241;
-  margin-top: 1rem;
   padding: 1.5rem 1rem;
   gap: 1rem;
   border-radius: 1rem;

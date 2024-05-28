@@ -24,7 +24,7 @@ const animationResetClass = ref('scale-animation');
     animationResetClass : isOpened
     ? (isTrapped ? trappedClass : emptyClass)
     : (isFlagged ? flaggedClass : closedClass)]">
-      <div class="hint-number" v-if="isOpened && hintNumber > 0">{{ hintNumber }}</div>
+      <div class="hint-number" v-if="isOpened && hintNumber > 0 && !isTrapped">{{ hintNumber }}</div>
     </div>
 </template>
 

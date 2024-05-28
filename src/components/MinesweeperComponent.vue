@@ -194,7 +194,7 @@ const setupWinState = () => {
         :cells="cells"
         :is-reset-happened="isResetHappened"
         @open-cell="handleLeftClick"
-        @flag-cell="handleRightClick"/>
+        @flag-cell="handleRightClick" @click.prevent/>
   </div>
 </template>
 

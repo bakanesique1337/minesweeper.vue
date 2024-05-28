@@ -77,7 +77,8 @@ const props = defineProps({
 
 .modal-body {
   margin: 20px 0;
-  overflow-y: scroll;
+  overflow: auto;
+  scroll-behavior: smooth;
 }
 
 .modal-default-button {
