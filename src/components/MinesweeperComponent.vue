@@ -81,6 +81,7 @@ function handleLeftClick(cellId) {
 
 function recursiveReveal(cellId) {
   if (!cells.value[cellId].isOpened) {
+    cells.value[cellId].isFlagged = false;
     cells.value[cellId].isOpened = true;
 
     setupWinState();
@@ -88,7 +89,7 @@ function recursiveReveal(cellId) {
     if (shouldReveal(cellId)) {
       const adjacentCells = cells.value[cellId].adjacentCellsIds;
       adjacentCells.forEach(adjCellId => {
-        if (!cells.value[adjCellId].isOpened) {
+        if (!cells.value[adjCellId].isOpened && !cells.value[adjCellId].isFlagged) {
           recursiveReveal(adjCellId);
         }
       });
@@ -98,7 +99,9 @@ function recursiveReveal(cellId) {
 
 function shouldReveal(cellId) {
   // Return true if the cell has no mines around it and isn't a mine itself
-  return cells.value[cellId].hintNumber === 0 && !cells.value[cellId].isTrapped;
+  return cells.value[cellId].hintNumber === 0
+      && !cells.value[cellId].isTrapped
+      && !cells.value[cellId].isFlagged;
 }
 
 function handleRightClick(cellId) {
