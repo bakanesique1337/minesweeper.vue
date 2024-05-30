@@ -70,7 +70,3 @@ npm install
 npm run dev
 ```
 This will start the project, and you can view it in your browser at http://localhost:8080 (or another port if specified).
-
-### Additional Information
-- _Configurations_: You can modify the project configuration by editing the vite.config.js file. 
-- _Customizing_: Feel free to customize the game logic, UI, and other aspects to suit your needs.

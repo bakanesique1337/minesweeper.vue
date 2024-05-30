@@ -47,17 +47,12 @@ const changeIsResetHappened = () => {
 }
 
 function handleLeftClick(cellId) {
-  console.log('handleLeftClick begins!');
-  console.log('cellId: ', cellId);
 
   // the first cell should never be trapped
   while (isFirstCellClicked.value) {
-    console.log('beginning of the while cycle');
     if (cells.value[cellId].isTrapped) {
-      console.log('first trapped cell detected!');
       resetCellsArray();
     } else {
-      console.log('first cell is not trapped!');
       isFirstCellClicked.value = false;
     }
   }
@@ -70,7 +65,6 @@ function handleLeftClick(cellId) {
     recursiveReveal(cellId);
 
   } else if (cells.value[cellId].isTrapped && isPlayerAliveOrDead.value && !isGameWon.value) {
-    console.log('before lose');
     cells.value[cellId].isOpened = true;
     showMinesOnGameOver();
     isPlayerAliveOrDead.value = false; // kills the player
@@ -105,7 +99,6 @@ function shouldReveal(cellId) {
 }
 
 function handleRightClick(cellId) {
-  console.log('handleRightClick begins!');
   // if reset happened before, change to default state
   if (isResetHappened.value) {
     isResetHappened.value = false;
@@ -115,16 +108,13 @@ function handleRightClick(cellId) {
     cells.value[cellId].isFlagged = !cells.value[cellId].isFlagged;
     if (cells.value[cellId].isTrapped) {
       // logic for the remaining mines count
-      console.log('cell is trapped');
       if (cells.value[cellId].isFlagged) {
         remainingMinesCount.value = remainingMinesCount.value - 1;
-        console.log('remainingMinesCount after decrease: ', remainingMinesCount.value);
       } else {
         remainingMinesCount.value = remainingMinesCount.value + 1;
       }
     }
   }
-  console.log('props.remainingMinesCount: ', remainingMinesCount.value);
 
   setupWinState();
 }
@@ -144,11 +134,9 @@ const resetTheGame = () => {
   isFirstCellClicked.value = true;
   isGameWon.value = false;
   resetCellsArray();
-  console.log('isResetHappened in resetTheGame:', isResetHappened.value);
 }
 
 const showMinesOnGameOver = () => {
-  console.log('showMinesOnGameOver begins');
   //const cellsArr = cells.value;
   for (let i = 0; i < cells.value.length; i++) {
     if (cells.value[i].isTrapped) {
@@ -161,21 +149,17 @@ const checkOpenedCellsWithoutFlag = () => {
   const expectedFlaggedMinesCount = 10;
   const expectedOpenedCells = cells.value.length - expectedFlaggedMinesCount;
   let openedCellsCount = 0;
-  console.log('checkOpenedCells begins');
   for (let i = 0; i < cells.value.length; i++) {
     if (cells.value[i].isOpened && !cells.value[i].isTrapped && !cells.value[i].isFlagged) {
       openedCellsCount++;
     }
   }
-  console.log('openedCellsCount: ', openedCellsCount);
-  console.log('expectedOpenedCells === openedCellsCount: ', expectedOpenedCells === openedCellsCount);
   return expectedOpenedCells === openedCellsCount;
 }
 
 
 const setupWinState = () => {
   if (remainingMinesCount.value === 0 && checkOpenedCellsWithoutFlag()) {
-    console.log('before win!');
     isGameWon.value = true;
     isTimerRunning.value = false;
     emits('showModalOnWin');

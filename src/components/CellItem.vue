@@ -72,7 +72,7 @@ const animationResetClass = ref('scale-animation');
 
 .flagged {
     background: center / 80% no-repeat url("https://techtheist.ru/bakasources/bakaicons/target.svg");
-    box-shadow: inset 2px 0px 6px 2px #1C1E24, 0 0 6px 2px #63223D;
+    box-shadow: inset 2px 0 6px 2px #1C1E24, 0 0 6px 2px #63223D;
 }
 
 .hint-number {

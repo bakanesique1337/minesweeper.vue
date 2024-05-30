@@ -15,13 +15,10 @@ const seconds = computed(() => Math.floor((time.value % 60000) / 1000));
 const minutes = computed(() => Math.floor(time.value / 60000));
 
 const stopTimer = () => {
-  console.log('stopTimer begins');
-  console.log('isResetHappened: ', props.isResetHappened);
 
   if (props.isResetHappened) {
     resetTimer();
   } else {
-    console.log('stopTimer else block');
     dateEnd.value = Date.now();
   }
 
@@ -59,7 +56,6 @@ watch(toRef(props, 'isTimerRunning'), value => {
 // Watching isResetHappened to reset the timer
 watch(toRef(props, 'isResetHappened'), (newVal) => {
   if (newVal === true) {
-    console.log('watch isResetHappened = true');
     resetTimer();
   }
 }, {immediate: true});

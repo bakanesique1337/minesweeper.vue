@@ -11,7 +11,7 @@ import StatisticsModalButton from './StatisticsModalButton.vue';
 import WinModal from "./WinModal.vue";
 import InfoButton from "@/components/InfoButton.vue";
 import PlaceholderParagraphContainer from "@/components/PlaceholderParagraphContainer.vue";
-import {useDateFormat, useNow, useStorage} from '@vueuse/core'
+import {useStorage} from '@vueuse/core'
 import {useTimeFromDOM} from "@/useTimeFromDOM.js";
 import {ref, toRef, watch} from "vue";
 import InfoContainer from "@/components/InfoContainer.vue";
@@ -56,9 +56,7 @@ const addRecordToLocalStorage = () => {
   if (!playerSessionRecords.value) {
     playerSessionRecords.value = [];
     playerSessionRecords.value.push(useTimeFromDOM(props.isGameWon, createCurrentDateTime()));
-    console.log('playerSessionRecords.value: ', playerSessionRecords.value);
   } else {
-    console.log('playerSessionRecords.value', playerSessionRecords.value);
     playerSessionRecords.value.push(useTimeFromDOM(props.isGameWon, createCurrentDateTime()));
   }
 }

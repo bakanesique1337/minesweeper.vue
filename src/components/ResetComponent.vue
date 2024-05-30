@@ -15,7 +15,6 @@ const currentIconType = ref(0);
 // Watching isResetHappened to reset the timer
 watch(toRef(props, 'isPlayerAliveOrDead'), (newVal) => {
   if (newVal === false) {
-    console.log('watch isPlayerAliveOrDead = false');
     currentIconType.value = 1;
   }
 }, {immediate: true});
