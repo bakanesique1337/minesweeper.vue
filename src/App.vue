@@ -3,9 +3,14 @@ import Minesweeper from './components/MinesweeperComponent.vue'
 import WinModal from './components/WinModal.vue'
 import GameHeader from "@/components/GameHeader.vue";
 
-import { ref } from 'vue'
+import {onMounted, ref} from 'vue'
 
 const showWinModal = ref(false);
+const version = import.meta.env.VITE_APP_VERSION;
+
+onMounted(() => {
+  console.log(`Welcome to my little Minesweeper game ${version}!\nThank you for your attention to my app! :3`);
+});
 
 const showModalOnWin = () => {
   showWinModal.value = true;
