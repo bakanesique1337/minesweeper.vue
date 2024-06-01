@@ -1,8 +1,6 @@
 export function useTimeFromDOM(isGameWon, formattedCurrentDateTime) {
     let currentSessionTime = getTimeFromDOM();
-    console.log('formattedCurrentDateTime: ', formattedCurrentDateTime);
     let status;
-    console.log('time in addSessionRecord: ', currentSessionTime);
     if (isGameWon) {
         currentSessionTime = `${currentSessionTime}`;
         status = 'win';
@@ -11,15 +9,12 @@ export function useTimeFromDOM(isGameWon, formattedCurrentDateTime) {
         status = 'lose';
     }
 
-    const currentSessionRecord = {
+    return {
         id: crypto.randomUUID(),
         time: currentSessionTime,
         status: status,
         currentDateTime: formattedCurrentDateTime,
     };
-
-    console.log('currentSessionRecord: ', currentSessionRecord);
-    return currentSessionRecord;
 }
 
 const getTimeFromDOM = () => {
